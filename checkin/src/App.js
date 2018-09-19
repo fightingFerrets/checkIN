@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
+import Logo from "./Components/Logo";
 import MapContainer from "./Components/Map";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <Logo />
 
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <MapContainer
-        />
+
+
+        {/* <MapContainer
+        /> */}
       </div>
     );
   }
