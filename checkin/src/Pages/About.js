@@ -7,11 +7,7 @@ import Logo from "../components/Logo";
 
 const About = () => (
   <div>
-    <Hero backgroundImage="../images/splash_bg.jpg">
-      <Logo />
 
-
-    </Hero>
 
   </div>
 );
