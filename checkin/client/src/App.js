@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import Logo from "./Components/Logo";
-// import Modal from "./Components/Modal";
-import MapContainer from "./Components/Map";
-
-class App extends Component {
-  render() {
-    return (
-
-      <div className="App">
-        <Logo />
+import Home from "./Pages/Home";
 
 
-
-        {/* <MapContainer
-        /> */}
-      </div>
-
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+      </Switch>
+    </div>
+  </Router>
+)
 
 export default App;
