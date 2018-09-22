@@ -4,6 +4,7 @@ import './App.css';
 import Home from "./Pages/Home";
 
 
+
 const App = () => (
   <Router>
     <div>
@@ -13,5 +14,6 @@ const App = () => (
     </div>
   </Router>
 )
+
 
 export default App;

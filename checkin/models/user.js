@@ -38,4 +38,5 @@ userSchema.method.comparePassword = function (candidatePassword, CB) {
     });
 };
 
+
 module.exports = User;
