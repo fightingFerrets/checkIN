@@ -1,96 +1,94 @@
 import React, { Component } from 'react';
-
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
-export class MapContainer extends Component {
-  render() {
-    return (
-      <Map google={this.props.google} zoom={20}>
+class MapContainer extends Component {
 
-        {/* <Marker name={'Your position'}
-          position={{ lat: 37.762391, lng: -122.439192 }}
-          icon={{
-            url: "/path/to/custom_icon.png",
-            anchor: new google.maps.Point(32, 32),
-            scaledSize: new google.maps.Size(64, 64)
-          }} /> */}
+  state = {
+    center: {
+      lat: 40.569325299999996,
+      lng: -111.8943465
+    },
+    zoom: 15,
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
+
+  componentDidMount() {
+    this.getLocation();
+  }
+
+  getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
+  showPosition = (position) => {
+    this.setState({
+      center: {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+    })
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude
+    console.log(lat);
+    console.log(long);
+  }
+
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
+
+  onMapClick = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  }
+
+  render() {
+
+
+    return (
+
+      <Map
+        google={this.props.google}
+        zoom={18}
+        center={this.state.center}
+        onClick={this.onMapClick}
+      >
+
+        <Marker
+          onClick={this.onMarkerClick}
+          position={{ lat: this.state.center.lat, lng: this.state.center.lng }}
+
+        />
+        <Marker />
+
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+        >
+          <div>
+            <h1>{'My Current Location'}</h1>
+          </div>
+        </InfoWindow>
+
       </Map>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyDnIJjSvcTsuJRKEa_iUCTnqwg6lZxiGbQ"
+  apiKey: ("AIzaSyDnIJjSvcTsuJRKEa_iUCTnqwg6lZxiGbQ")
 })(MapContainer)
-
-// < !DOCTYPE html >
-//   <html>
-//     <head>
-//       <title>Geolocation</title>
-//       <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-//         <meta charset="utf-8">
-//           <style>
-//             /* Always set the map height explicitly to define the size of the div
-//              * element that contains the map. */
-//             #map {
-//               height: 100%;
-//           }
-//           /* Optional: Makes the sample page fill the window. */
-//       html, body {
-//               height: 100%;
-//             margin: 0;
-//             padding: 0;
-//           }
-//     </style>
-//   </head>
-//         <body>
-//           <div id="map"></div>
-//           <script>
-//             // Note: This example requires that you consent to location sharing when
-//             // prompted by your browser. If you see the error "The Geolocation service
-//             // failed.", it means you probably did not give permission for the browser to
-//             // locate you.
-//             var map, infoWindow;
-//       function initMap() {
-//               map = new google.maps.Map(document.getElementById('map'), {
-//                 center: { lat: -34.397, lng: 150.644 },
-//                 zoom: 6
-//               });
-//             infoWindow = new google.maps.InfoWindow;
-
-//             // Try HTML5 geolocation.
-//         if (navigator.geolocation) {
-//               navigator.geolocation.getCurrentPosition(function (position) {
-//                 var pos = {
-//                   lat: position.coords.latitude,
-//                   lng: position.coords.longitude
-//                 };
-
-//                 infoWindow.setPosition(pos);
-//                 infoWindow.setContent('Location found.');
-//                 infoWindow.open(map);
-//                 map.setCenter(pos);
-//               }, function () {
-//                 handleLocationError(true, infoWindow, map.getCenter());
-//               });
-//             } else {
-//               // Browser doesn't support Geolocation
-//               handleLocationError(false, infoWindow, map.getCenter());
-//             }
-//           }
-
-//       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//               infoWindow.setPosition(pos);
-//             infoWindow.setContent(browserHasGeolocation ?
-//                                   'Error: The Geolocation service failed.' :
-//                                   'Error: Your browser doesn\'t support geolocation.');
-//             infoWindow.open(map);
-//           }
-//     </script>
-//           <script async defer
-//             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnIJjSvcTsuJRKEa_iUCTnqwg6lZxiGbQ&callback=initMap">
-//           </script>
-//         </body>
-// </html>
-
-
