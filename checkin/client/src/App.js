@@ -4,6 +4,7 @@ import './App.css';
 import Home from "./Pages/Home";
 import About from "./Pages/About/About";
 import CheckIn from "./Pages/CheckIn";
+import SignOut from "./Pages/SignOut";
 
 
 
@@ -15,6 +16,7 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/About" component={About} />
         <Route exact path="/checkIn" component={CheckIn} />
+        <Route exact path="/signOut" component={SignOut} />
       </Switch>
     </div>
   </Router>
