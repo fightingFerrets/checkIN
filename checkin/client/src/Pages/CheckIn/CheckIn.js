@@ -1,13 +1,18 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Maps from "../../Components/Map";
+import Nav from "../../Components/Nav";
 
 class CheckIn extends Component {
     render() {
         return (
-            <Maps />
+            <div>
+                <Nav />
+                <Maps />
             // check in button 
             // send button
-            // log out button? 
+
+            </div>
+
         )
     }
 }
