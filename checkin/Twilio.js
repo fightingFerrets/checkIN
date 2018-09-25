@@ -28,10 +28,10 @@
 
 
 
-client.messages
-    .create({ from: '+17024251086', body: 'body', to: '+17027690995' })
-    .then(message => console.log(message.sid))
-    .done();
+// client.messages
+//     .create({ from: '+17024251086', body: 'body', to: '+17027690995' })
+//     .then(message => console.log(message.sid))
+//     .done();
 
 // const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
