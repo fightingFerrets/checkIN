@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Home from "./Pages/Home";
 import About from "./Pages/About/About";
-// import Modal from "./Components/Modal";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import MapContainer from "./Components/Map";
+import CheckIn from "./Pages/CheckIn";
+
 
 
 
