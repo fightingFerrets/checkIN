@@ -1,4 +1,4 @@
-import Logo from "../../Components/Logo";
+
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
@@ -15,8 +15,8 @@ class Nav extends Component {
                     <div class="navbar-nav">
                         <Link to="/"><a class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a></Link>
                         <Link to="/About"><a class="nav-item nav-link active">About</a></Link>
-                        <Link to="/checkIn"><a class="nav-item nav-link active">CheckIn</a></Link>
-                        <Link to="/checkIn"><a class="nav-item nav-link active">Sign Out</a></Link>
+                        <Link to="/checkIn"><a class="nav-item nav-link active">Check In</a></Link>
+                        <Link to="/signOut"><a class="nav-item nav-link active">Sign Out</a></Link>
                     </div>
                 </div>
             </nav>
