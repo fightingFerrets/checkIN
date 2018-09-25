@@ -1,4 +1,25 @@
+const MessagingResponse =
+    require("twilio").twiml.MessagingResponse;
 
+sendLocation = () => {
+
+    app.post("/sms", (req, res) => {
+
+        number = req.body.phone_number;
+        first_name = req.body.first_name;
+        format_number = "+1" + number
+
+        client.messages
+            .create({ from: '+17024251086', body: 'body', to: format_number, mediaUrl: "" })
+            .then(message => console.log(message.sid))
+            .done();
+
+        // const twiml = new MessagingResponse();
+        // twiml.message("Thanks for signing up!");
+        // res.end(twiml.toString());
+    });
+
+}
 
 // APIKEYSECRET = "UPijZZeaPvLjnnW69FUvYj6iHOSv9jLl"
 // SID = "SK28a639bcbc52bb579cb20fd4b5bdcf2b"
