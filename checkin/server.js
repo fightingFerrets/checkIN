@@ -38,9 +38,9 @@ sendLocation = () => {
             .then(message => console.log(message.sid))
             .done();
 
-        // const twiml = new MessagingResponse();
-        // twiml.message("Thanks for signing up!");
-        // res.end(twiml.toString());
+        const twiml = new MessagingResponse();
+        twiml.message("Thanks for signing up!");
+        res.end(twiml.toString());
     });
 
 }
