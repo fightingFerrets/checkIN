@@ -23,8 +23,8 @@ signUp() {
   auth.createUserWithEmailAndPassword(email, password)
   .then(() => {
     
-    alert('Success, Proceed to login');
-    window.location.href = '/';
+    alert('Success');
+    window.location.href = '/checkIn';
   })
   .catch(error => {
     this.setState({error})
