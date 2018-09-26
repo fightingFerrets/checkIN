@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import Maps from "../../Components/Map";
 import Nav from "../../Components/Nav"
 import { Container, Row, Col, Button } from "../../Components/Parts"
+import AddPeople from "../../Components/AddPeople";
 
 class CheckIn extends Component {
-
     state = {
-        phoneNum =[],
-        receiver =[],
-        mediaUrl,
+        receiver: [],
+        phoneNum: [],
+        status: [],
+        mediaUrl: '',
+        comment: []
 
     }
 
+    //this function should send your mediaUrl location to 
     sendLocation = () => {
         const MessagingResponse =
             require("twilio").twiml.MessagingResponse;
@@ -37,9 +40,8 @@ class CheckIn extends Component {
         });
 
     }
+
     render() {
-
-
         return (
 
             <div>
@@ -49,10 +51,10 @@ class CheckIn extends Component {
                         <Col size="md-12"
                             className="align-self-center">
                             <Button
-                                //clickfunction
+                                onClick={() => this.addPersonAndSend()}
                                 value="CheckIn"
                                 className="d-block"
-                                onClick={this.props.sendLocation}
+
                             >Send Check In</Button>
                         </Col>
                     </Row>
@@ -60,11 +62,10 @@ class CheckIn extends Component {
                         <Maps />
                     </Row>
                 </Container>
+                <AddPeople />
             </div>
 
         )
     }
 }
-
-
 export default CheckIn; 
