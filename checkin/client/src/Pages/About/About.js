@@ -5,7 +5,7 @@ import Nav from "../../Components/Nav"
 class About extends Component {
     render() {
         return (
-            <div id="allContian" style={{ backgroundImage: `url('./images/a_splash.jpg')` }}>
+            <div id="allContian" style={{ backgroundImage: `url('../../public/images/a_splash.jpg')` }}>
                 <Nav />
 
                 <div className="aboutContainer">
