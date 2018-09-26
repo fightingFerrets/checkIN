@@ -5,6 +5,7 @@ import firebase, { auth, provider } from '../../firebase'
 import GoogleButton from 'react-google-button'
 
 
+
 class Modal extends Component {
   constructor(props) {
     super(props);
@@ -73,6 +74,7 @@ class Modal extends Component {
               placeholder="password"
               onChange={event => this.setState({password: event.target.value})}
               />
+
             </div>
        
           <button 
@@ -84,10 +86,12 @@ class Modal extends Component {
               </button>
               <br></br><br></br>
 
+
           <GoogleButton
             onClick={() => this.googleLogIn()}
             />
               <br></br><br></br>
+
 
             </form>
 

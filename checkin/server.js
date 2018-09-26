@@ -4,8 +4,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const accountSid = 'AC6be3394fb63a85337897d91cf9eb4486';
-const authToken = '3d03f30b19b6db41f3d9f6af6fabd5ec';
+
 const client = require('twilio')(accountSid, authToken);
 
 app.use(bodyParser.urlencoded({ extended: true }));

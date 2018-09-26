@@ -19,7 +19,7 @@
   font-family: 'GothamLightItalic';
   src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-LightItalic.otf")
 }
-
+  
 @font-face {
   font-family: 'GothamBold';
   src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Bold.otf")
@@ -40,8 +40,8 @@
     transform: translate(-50%,-57%);
     z-index: 11;
     /* background: url('./images/splash_bg.jpg'); */
-      
     text-align: center;
+      
 
 
 
