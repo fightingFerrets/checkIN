@@ -18,12 +18,6 @@ class CheckIn extends Component {
                                 value="CheckIn"
                                 className="d-block"
                             >Send Check In</Button>
-                            //add someone?
-                            <Button
-                                //clickfunction
-                                value="Log Out"
-                                className="d-block"
-                            ></Button>
                         </Col>
                     </Row>
                     <Row>
