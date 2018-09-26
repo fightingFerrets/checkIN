@@ -36,7 +36,7 @@ class Modal extends Component {
     auth.signInWithPopup(provider) 
     .then((result) => {
       console.log(result);
-      window.location.href = '/';
+      window.location.href = '/checkIn';
       
     });
 }

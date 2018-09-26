@@ -16,13 +16,13 @@ const Logo = props => (
         <img src="../images/logo.png" />
         <button type="button" className="button loginBtn" data-toggle="modal" data-target="#exampleModal">Login</button><br />
 
-        <button href="button" className="button signUpBtn"  data-toggle="modal" data-target="#signUpModal">Sign Up</button><br></br>
-        <button href="" className="button aboutBtn">About Us</button>
+        <button href="button" className="button signUpBtn" data-toggle="modal" data-target="#signUpModal">Sign Up</button><br></br>
+        <Link to="/About"><button className="button aboutBtn">About Us</button></Link>
       </div>
     </div>
     <Modal />
     <SignUpModal />
-    
+
   </div>
 
 
