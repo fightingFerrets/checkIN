@@ -85,6 +85,16 @@
   margin-bottom: 10px;
 }
 
+.button.signUpBtn {
+  background: #ed5a4e;
+  margin-bottom: 10px;
+}
+
+.button.signUpBtn:hover {
+  background: #ef7167;
+  color: #f0f0f0;
+}
+
 .button.aboutBtn:hover {
   background: #313131;
 }

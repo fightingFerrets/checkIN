@@ -1,45 +1,95 @@
 
-import React from "react";
+import React, { Component } from 'react';
 import "./SignUp.css";
+import firebase, { auth, provider } from '../../firebase'
 
-const Modal = props => (
-  <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog" role="document">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">Matrix Data Sheet</h5>
-          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div className="modal-body">
-          {/* SUBMIT FORM */}
-          <form>
-            <div className="form-group">
+
+
+class SignUpModal extends Component {
+constructor(props) {
+  super(props);
+  this.state = {
+    email: '',
+    password: '',
+    error: {
+      message: ''
+    }
+  }
+}
+
+signUp() {
+  console.log('this.state', this.state);
+  const { email, password} = this.state;
+  auth.createUserWithEmailAndPassword(email, password)
+  .then(() => {
+    
+    alert('Success, Proceed to login');
+    window.location.href = '/';
+  })
+  .catch(error => {
+    this.setState({error})
+  });
+}
+
+  render() {
+      return (
+        <div className="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLabel">Sign Up</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+          
+            <div className="modal-body">
+              <form>
+                <div className="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-              <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div className="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
+              <input 
+                className="form-control"
+                type="email"
+                placeholder="email"
+                onChange={event => this.setState({email: event.target.value})}
+                />
+              </div>
 
-            <button type="submit" className="btn btn-primary">Submit</button>
-          </form>
-        </div>
-        <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div className="form-group">
+            <label for="exampleInputPassword1">Password</label>
 
+              <input 
+                className="form-control"
+                type="password"
+                placeholder="password"
+                onChange={event => this.setState({password: event.target.value})}
+                />
+              </div>
+         
+            <button 
+                className="btn btn-primary"
+                type="button"
+                onClick={() => this.signUp()}
+                >
+                Sign Up
+                </button>
+              </form>
+
+               <div className="modal-footer">
+               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+
+              </div>
+              <div>{this.state.error.message}</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+     
+      )
+  }
+}
 
 
 
 
-
-);
-
-export default Modal;
+export default SignUpModal;
