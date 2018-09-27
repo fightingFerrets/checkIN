@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AddPeople extends Component {
+class SendNow extends Component {
     state = {
         receiver: [],
         phoneNum: [],
@@ -14,19 +14,19 @@ class AddPeople extends Component {
     render() {
         return (
 
-            <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+            <div className="modal fade" id="sendNowModal" tabindex="-1" role="dialog" aria-labelledby="sendNowModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Check In</h5>
+                            <h5 className="modal-title" id="sendNowModalLabel">Check In</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true"></span>
                             </button>
                         </div>
 
                         <div className="modal-body">
                             <div className="form-group">
-                                <label for="input">Check In With?</label>
+                                <label htmlFor="input">Check In With?</label>
 
                                 {this.state.receiver.map(receiver => {
                                     return <div class="checkbox">
@@ -35,18 +35,34 @@ class AddPeople extends Component {
                                 })
                                 }
 
-                                < label for="input">Status? example: Hiking, Safe, On My Way Home From, etc.</label>
+                                <label htmlFor="input">Check In With... Hermoine Granger?</label>
 
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">Hiking</span>
+                                <div class="input-group input-group-sm mb-3">
+                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                    </input>
                                 </div>
 
-                                <label for="input">Comment</label>
 
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">Comment</span>
+                                <label htmlFor="input">Phone # example: 7027590101</label>
+
+                                <div class="input-group input-group-sm mb-3">
+                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                    </input>
                                 </div>
 
+                                <label htmlFor="input">Status? example: Hiking, Leaving From, Safe, etc.</label>
+
+                                <div class="input-group input-group-sm mb-3">
+                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                    </input>
+                                </div>
+
+                                <label htmlFor="input">Comment</label>
+
+                                <div class="input-group input-group-sm mb-3">
+                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                    </input>
+                                </div>
 
                             </div>
 
@@ -58,22 +74,14 @@ class AddPeople extends Component {
                                 Check In
                                 </button>
 
-                            <button
-                                className="btn btn-primary"
-                                type="button"
-                                onClick={() => this.sendLocation()}
-                            >
-                                Add Someone
-                                </button>
-
                         </div>
                     </div>
                 </div>
-                <AddPeople />
+                {/* <AddPeople /> */}
             </div >
         )
     }
 
 }
 
-export default AddPeople;
+export default SendNow;

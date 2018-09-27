@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
+import { auth } from '../../firebase'
 class AddPeople extends Component {
     state = {
-        receiver: [],
+        receiver: [], //person in mongo db related with our user
         phoneNum: [],
         status: [],
         mediaUrl: '',
@@ -16,6 +16,11 @@ class AddPeople extends Component {
         })
     }
 
+    checkSignedInUserFreinds = (user) => {
+        //api to call user model and populate all their friends
+        //then set to state
+    }
+
     //function that adds a person to mongodb and refreshes the modal allowing a user to add another person to their check in
     addMultiple = () => {
         this.setState({
@@ -23,15 +28,31 @@ class AddPeople extends Component {
         })
     }
 
+    componentDidMount() {
+        auth.onAuthStateChanged(function (user) {
+            console.log(user);
+            console.log(user.displayName)
+            console.log(user.email)
+            if (user) {
+                // User is signed in.
+                //insert user into db the constarint will keep duplication from happening
+                //aftuser is in db call checkSignedInUserFreinds
+
+            } else {
+                // No user is signed in.
+            }
+        });
+    }
+
     render() {
         return (
-            <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+            <div className="modal fade" id="addModal" tabIndex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Check In</h5>
+                            <h5 className="modal-title" id="addModalLabel">Check In</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true"></span>
                             </button>
                         </div>
 
@@ -39,28 +60,33 @@ class AddPeople extends Component {
                             <form>
 
                                 <div className="form-group">
-                                    <label for="input">Check In With?</label>
+                                    <label htmlFor="input">Check In With... Hermoine Granger?</label>
 
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Hermoine Granger</span>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                        </input>
                                     </div>
 
-                                    <label for="input">Phone # example: 7027590101</label>
 
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Phone Number</span>
+                                    <label htmlFor="input">Phone # example: 7027590101</label>
+
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                        </input>
                                     </div>
 
-                                    <label for="input">Status? example: Hiking, Safe, etc.</label>
+                                    <label htmlFor="input">Status? example: Hiking, Leaving From, Safe, etc.</label>
 
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Hiking</span>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                        </input>
                                     </div>
 
-                                    <label for="input">Comment</label>
+                                    <label htmlFor="input">Comment</label>
 
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm">Comment</span>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                        </input>
                                     </div>
 
                                 </div>
