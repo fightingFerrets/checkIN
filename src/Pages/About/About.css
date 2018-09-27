@@ -1,0 +1,30 @@
+.aboutContainer {
+    height: 100vh;
+    background: black;
+    text-align: center;
+    position: relative;
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.d {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-57%);
+    transform: translate(-50%,-57%);
+    z-index: 11;
+    /* background: url('./images/splash_bg.jpg'); */
+    text-align: center;
+    width: 900px;
+      
+
+
+
+
+}
+.ffLogo {
+    width: 100%;
+    min-width: 900px;
+    max-width: 1277px;
+}
