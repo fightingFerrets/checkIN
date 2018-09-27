@@ -2,13 +2,19 @@
 import React, { Component } from "react";
 import "./About.css";
 import Nav from "../../Components/Nav"
+
+// var background = {
+//     backgroundImage: 'url(../images/a_splash.jpg)',
+//   };
+
+
 class About extends Component {
     render() {
         return (
-            <div id="allContian" style={{ backgroundImage: `url('./images/a_splash.jpg')` }}>
+            <div id="allContian" style={{ backgroundImage: `url('../../public/images/a_splash.jpg')` }}>
                 <Nav />
 
-                <div className="aboutContainer">
+                <div className="aboutContainer" style={{ backgroundImage: `url('../images/a_splash.jpg')` }}>
 
                     <div className="d">
                         <img src="../images/ff_logo.png" className="ffLogo" />
