@@ -4,6 +4,7 @@ import Nav from "../../Components/Nav"
 import { Container, Row, Col, Button } from "../../Components/Parts"
 import AddPeople from "../../Components/AddPeople";
 import SendNow from "../../Components/SendNow";
+import "./CheckIn.css";
 
 class CheckIn extends Component {
     state = {
@@ -52,14 +53,14 @@ class CheckIn extends Component {
 
             <div>
                 <Nav />
-                <Container>
-                    <Row>
+                <Container  >
+                    <Row className="buttonHolder" >
                         <Col size="md-12"
-                            className="align-self-center">
+                            className="align-self-center buttonHolder">
                             <button
                                 onClick={() => this.addPersonAndSend}
                                 value="add"
-                                className="d-block btn btn-dark"
+                                className="button loginBtn"
                                 data-toggle="modal"
                                 data-target="#addModal"
 
@@ -67,17 +68,16 @@ class CheckIn extends Component {
                             <button
                                 onClick={() => this.checkIn}
                                 value="sendNow"
-                                className="d-block btn btn-dark"
+                                className="button aboutBtn"
                                 data-toggle="modal"
                                 data-target="#sendNowModal"
 
                             >Check In</button>
                         </Col>
                     </Row>
-                    <Row>
-                        <Maps />
-                    </Row>
+
                 </Container>
+                <Maps />
                 <AddPeople />
                 <SendNow />
             </div>

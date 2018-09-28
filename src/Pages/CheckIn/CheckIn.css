@@ -1,0 +1,103 @@
+/* iframe {
+   border: 1px solid black;
+   padding: 5px;
+    width: 50%;
+} */
+.container div.row div.col-md-12 {
+    text-align: center;
+    margin-top: 5%;
+}
+.button {
+    margin: 2%;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 25px;
+    padding: .8rem;
+    font-size: 1.2rem;
+    border: none;
+    color: white;
+    font-family: 'GothamBold';
+    cursor: pointer;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+  
+  }
+  
+  .button.loginBtn {
+    background: #ed5a4e;
+    margin-bottom: 10px;
+  }
+  
+  .button.loginBtn:hover {
+    background: #ef7167;
+    color: #f0f0f0;
+  }
+  
+  .button.aboutBtn {
+    background: #595959;
+    margin-bottom: 10px;
+  }
+  
+  .button.signUpBtn {
+    background: #ed5a4e;
+    margin-bottom: 10px;
+  }
+  
+  .button.signUpBtn:hover {
+    background: #ef7167;
+    color: #f0f0f0;
+  }
+  
+  .button.aboutBtn:hover {
+    background: #313131;
+  }
+
+  @media screen and (max-width: 991px) {
+    .container div.row div.col-md-12 {
+    
+        margin-top: 10%;
+    }
+    .button {
+        margin: 1% auto 0 auto;
+ 
+    width: 100%;
+    max-width: 360px;
+    border-radius: 25px;
+    padding: .4rem;
+    font-size: 1.2rem;
+    border: none;
+    color: white;
+    font-family: 'GothamBold';
+    cursor: pointer;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container div.row div.col-md-12 {
+    
+        margin-top: 12%;
+    }
+    .button {
+        margin: 1% auto 0 auto;
+    }
+  }
+  @media screen and (max-width: 553px) {
+    .container div.row div.col-md-12 {
+    
+        margin-top: 18%;
+    }
+    .button {
+        margin: .5% auto 0 auto;
+        width: 100%;
+        border-radius: 5px;
+
+    }
+  }
