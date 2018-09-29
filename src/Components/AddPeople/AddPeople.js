@@ -23,7 +23,7 @@ const AddPeople = props => (
                                 >
                                 </input>
                             </div>
-                            <label htmlFor="input">Phone Number ex: 702-888-5555</label>
+                            <label htmlFor="input">Phone Number ex: 7028885555</label>
                             <div className="input-group input-group-sm mb-3">
                                 <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                                     id="phoneNum"

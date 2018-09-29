@@ -1,7 +1,13 @@
 const db = require("../models");
 
 module.exports = {
+    findAll: function (req, res) {
+        console.log("HEllo");
+        res.send("IM here");
+    },
+
     findById: function (req, res) {
+        console.log(req.params.id)
         db.User
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))

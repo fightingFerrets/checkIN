@@ -3,9 +3,11 @@
    padding: 5px;
     width: 50%;
 } */
+
 .container div.row div.col-md-12 {
     text-align: center;
     margin-top: 5%;
+
 }
 .button {
     margin: 2%;
