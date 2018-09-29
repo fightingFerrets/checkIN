@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 const AddPeople = props => (
     <div className="modal fade" id="addModal" tabIndex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
@@ -29,6 +30,7 @@ const AddPeople = props => (
                                     value={props.phoneNum}
                                     onChange={props.onChange}
                                     name="phoneNum"
+
                                 >
                                 </input>
                             </div>
