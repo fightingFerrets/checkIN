@@ -96,6 +96,17 @@ class CheckIn extends Component {
     //     });
     // }
 
+    componentWillMount() {
+        auth.onAuthStateChanged(function (user) {
+        
+            if (user) {
+            } else {
+                alert('You have not logged in. Please create an account or log in.')
+                window.location.href = '/';
+            }
+        });
+    }
+
     addPersonAndSend = () => {
         console.log("click");
     }
