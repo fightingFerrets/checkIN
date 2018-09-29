@@ -26,9 +26,9 @@ class CheckIn extends Component {
     }
     handleFormSubmit = event => {
         event.preventDefault();
-        API.saveContact({
+        console.log(event)
+        this.addMultiple();
 
-        })
     }
     //function that adds a person to our mongo db and sends the mediaUrl
     // addPersonAndSend = () => {
@@ -36,15 +36,18 @@ class CheckIn extends Component {
     getReceivers = (userId) => {
         //api to call user model and populate all their friends
         //then set to state
+
         API.getContacts(userId).then(res =>
             this.setState({
                 sendTo: res.data
             }));
     }
-    //function that adds a person to mongodb and refreshes the modal allowing a user to add another person to their check in
-    // addMultiple = id => {
-    //     const receiver;
-    // }
+    // function that adds a person to mongodb and refreshes the modal allowing a user to add another person to their check in
+    addMultiple = userId => {
+        API.saveContact({
+
+        })
+    }
     componentDidMount() {
         auth.onAuthStateChanged(function (user) {
             console.log(user);
@@ -82,15 +85,17 @@ class CheckIn extends Component {
     //         res.end(twiml.toString());
     //     });
     // }
+
     addPersonAndSend = () => {
         console.log("click");
     }
+
     render() {
         return (
             <div>
                 <Nav />
                 <Container  >
-                    <Row className="buttonHolder" >
+                    <div className="buttonHolder" >
                         <Col size="md-12"
                             className="align-self-center buttonHolder">
                             <button
@@ -108,7 +113,7 @@ class CheckIn extends Component {
                                 data-target="#sendNowModal"
                             >Check In</button>
                         </Col>
-                    </Row>
+                    </div>
                 </Container>
                 <Maps />
 
