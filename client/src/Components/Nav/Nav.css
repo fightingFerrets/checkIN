@@ -7,7 +7,7 @@ nav {
     box-shadow: 0 0 05px rgba(.0,0,0,0.75);
 }
 .fixMe {
-    position: fixed !important;
+    /* position: fixed !important; */
     z-index: 6;
 }
 .navbar-brand img {

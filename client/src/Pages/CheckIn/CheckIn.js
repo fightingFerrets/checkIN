@@ -4,7 +4,6 @@ import Nav from "../../Components/Nav"
 import { Container, Row, Col, Button } from "../../Components/Parts"
 import AddPeople from "../../Components/AddPeople";
 import SendNow from "../../Components/SendNow";
-
 import { auth } from '../../firebase'
 import API from "../../Utils/API";
 
@@ -38,6 +37,7 @@ class CheckIn extends Component {
     getReceivers = (userId) => {
         //api to call user model and populate all their friends
         //then set to state
+
         API.getContacts(userId).then(res =>
             this.setState({
                 sendTo: res.data
@@ -95,15 +95,17 @@ class CheckIn extends Component {
     //         res.end(twiml.toString());
     //     });
     // }
+
     addPersonAndSend = () => {
         console.log("click");
     }
+
     render() {
         return (
             <div>
                 <Nav />
                 <Container  >
-                    <Row className="buttonHolder" >
+                    <div className="buttonHolder" >
                         <Col size="md-12"
                             className="align-self-center buttonHolder">
                             <button
@@ -121,8 +123,7 @@ class CheckIn extends Component {
                                 data-target="#sendNowModal"
                             >Check In</button>
                         </Col>
-                    </Row>
-
+                    </div>
                 </Container>
                 <Maps />
 

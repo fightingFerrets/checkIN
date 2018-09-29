@@ -30,7 +30,7 @@ class SendNow extends Component {
 
                                 {this.state.receiver.map(receiver => {
                                     return <div class="checkbox">
-                                        <label><input type="checkbox" value={this.state.receiver} />{this.state.receiver}</label>
+                                        <label><input type="checkbox" value={this.state.receiver} /></label>
                                     </div>
                                 })
                                 }
