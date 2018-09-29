@@ -37,10 +37,10 @@ const AddPeople = props => (
                             <label htmlFor="input">Status? example: Hiking, Leaving From, Safe, etc.</label>
                             <div className="input-group input-group-sm mb-3">
                                 <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                                    id="status"
-                                    value={props.status}
+                                    id="condition"
+                                    value={props.condition}
                                     onChange={props.onChange}
-                                    name="status"
+                                    name="condition"
                                 >
                                 </input>
                             </div>
