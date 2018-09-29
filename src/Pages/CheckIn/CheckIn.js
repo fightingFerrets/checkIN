@@ -13,7 +13,7 @@ class CheckIn extends Component {
         sendTo: [],
         receiver: '', //person in mongo db related with our user
         phoneNum: '',
-        status: '',
+        condition: '',
         mediaUrl: '',
         comment: '',
         userId: ''
@@ -27,13 +27,14 @@ class CheckIn extends Component {
     }
     handleFormSubmit = event => {
         event.preventDefault();
-        API.saveContact({
-
-        })
+        console.log(event);
+        console.log(this.state.receiver)
+        console.log(this.state.userId)
+        this.addMultiple(this.state.userId);
     }
     //function that adds a person to our mongo db and sends the mediaUrl
-    // addPersonAndSend = () => {
-    // }
+    addPersonAndSend = () => {
+    }
     getReceivers = (userId) => {
         //api to call user model and populate all their friends
         //then set to state
@@ -43,12 +44,23 @@ class CheckIn extends Component {
             }));
     }
     //function that adds a person to mongodb and refreshes the modal allowing a user to add another person to their check in
-    // addMultiple = id => {
-    //     const receiver;
-    // }
+    addMultiple = userId => {
+        API.saveContact(userId, {
+            receiver: this.state.receiver,
+            phoneNum: this.state.phoneNum,
+            condition: this.state.condition,
+            comment: this.state.comment
+
+        }).then(res =>
+            this.setState({
+                sendTo: res.data
+            }));
+        this.getReceivers();
+    }
     componentDidMount() {
         auth.onAuthStateChanged(function (user) {
             console.log(user);
+            console.log(user.uid);
             console.log(user.displayName)
             console.log(user.email)
             if (user) {
@@ -119,7 +131,7 @@ class CheckIn extends Component {
                     onClick={this.handleFormSubmit}
                     receiver={this.state.receiver}
                     phoneNum={this.state.phoneNum}
-                    status={this.state.status}
+                    status={this.state.condition}
                     comment={this.state.comment}
                 />
 
