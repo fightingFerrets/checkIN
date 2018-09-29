@@ -1,0 +1,81 @@
+
+
+@font-face {
+    font-family: 'Gotham';
+    src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Book.otf")
+  }
+  
+  @font-face {
+    font-family: 'GothamItalic';
+    src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-BookItalic.otf")
+  }
+  
+  @font-face {
+    font-family: 'GothamLight';
+    src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Light.otf")
+  }
+  
+  @font-face {
+    font-family: 'GothamLightItalic';
+    src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-LightItalic.otf")
+  }
+    
+  @font-face {
+    font-family: 'GothamBold';
+    src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Bold.otf")
+  }
+  
+  @font-face {
+    font-family: 'GothamBoldItalic';
+    src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-BoldItalic.otf")
+  }
+.aboutContainer {
+    height: 100vh;
+    background: black;
+    text-align: center;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+.mainNames {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-57%);
+    transform: translate(-50%,-57%);
+    z-index: 11;
+    /* background: url('./images/splash_bg.jpg'); */
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+      
+
+
+
+
+}
+.mainNames img {
+    width: 100%;
+
+    max-width: 1277px;
+}
+#ourNames {
+margin-top: 4%;
+}
+#ourNames a {
+    width: 100%;
+    padding: 2%;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'GothamLight';
+    color: white;
+    background: transparent;
+    width: 98%;
+
+}
+#ourNames a:hover {
+    border: 1px solid white;
+}
