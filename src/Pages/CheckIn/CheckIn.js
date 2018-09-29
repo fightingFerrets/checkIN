@@ -4,15 +4,80 @@ import Nav from "../../Components/Nav"
 import { Container, Row, Col, Button } from "../../Components/Parts"
 import AddPeople from "../../Components/AddPeople";
 import SendNow from "../../Components/SendNow";
+import { auth } from '../../firebase'
+import API from "../../Utils/API";
 
 class CheckIn extends Component {
     state = {
-        receiver: [],
-        phoneNum: [],
-        status: [],
+        sendTo: [],
+        receiver: '', //person in mongo db related with our user
+        phoneNum: '',
+        condition: '',
         mediaUrl: '',
-        comment: []
+        comment: '',
+        userId: ''
+    }
 
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.getReceivers();
+
+    }
+
+    //function that adds a person to our mongo db and sends the mediaUrl
+    // addPersonAndSend = () => {
+
+    // }
+
+    getReceivers = (userId) => {
+        //api to call user model and populate all their friends
+        //then set to state
+        API.getContacts(userId).then(res =>
+            this.setState({
+                sendTo: res.data
+            }));
+    }
+
+    //function that adds a person to mongodb and refreshes the modal allowing a user to add another person to their check in
+    addMultiple = (userId) => {
+        const sendTo = {
+            receiver: this.receiver,
+            phoneNum: this.phoneNum,
+            condition: this.condition,
+            comment: this.comment
+        }
+        API.saveContact(userId, sendTo).then(res => {
+            this.getReceivers();
+        })
+
+    }
+
+    componentDidMount() {
+        auth.onAuthStateChanged(function (user) {
+            console.log(user);
+            console.log(user.displayName)
+            console.log(user.email)
+
+            if (user) {
+                // User is signed in.
+                //insert user into db the constarint will keep duplication from happening
+                API.userLogIn(user.uid).then(res => this.getReceivers());
+                this.setState({
+                    userId: user.uid
+                })
+                //aftuser is in db call getReceivers
+
+            } else {
+                // No user is signed in.
+            }
+        });
     }
 
     // //this function should send your mediaUrl location to 
@@ -74,11 +139,16 @@ class CheckIn extends Component {
                             >Check In</button>
                         </Col>
                     </Row>
-                    <Row>
-                        <Maps />
-                    </Row>
                 </Container>
-                <AddPeople />
+                <Maps />
+                <AddPeople
+                    handleInputChange={this.handleInputChange}
+                    handleFormSubmit={this.handleFormSubmit}
+                    receiver={this.receiver}
+                    phoneNum={this.phoneNum}
+                    condition={this.condition}
+                    comment={this.comment}
+                />
                 <SendNow />
             </div>
 

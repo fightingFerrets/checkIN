@@ -6,7 +6,16 @@ export default {
         return axios.get("/api/user/" + id);
     },
     // Saves an article to the database
-    saveContact: function (contactData) {
-        return axios.post("/api/user", contactData);
+    saveContact: function (id, contactData) {
+        return axios.post("/api/user/" + id, contactData);
+    },
+
+    userLogIn: function (user) {
+        return axios.post("/api/user", user);
+    },
+
+    //Send message or check in 
+    sendMessage: function (receiverData) {
+        return axios.post("/api/sms", receiverData);
     }
 };
