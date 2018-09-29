@@ -74,7 +74,7 @@ class CheckIn extends Component {
             } else {
                 // No user is signed in.
             }
-        });
+        }.bind(this));
     }
     // //this function should send your mediaUrl location to 
     // sendLocation = () => {
