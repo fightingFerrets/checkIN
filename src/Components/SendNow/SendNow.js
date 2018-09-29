@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import "./SendNow.css";
 class SendNow extends Component {
     state = {
         receiver: [],
@@ -16,7 +16,7 @@ class SendNow extends Component {
 
             <div className="modal fade" id="sendNowModal" tabindex="-1" role="dialog" aria-labelledby="sendNowModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
-                    <div className="modal-content">
+                    <div className="modal-content" style={{ backgroundImage: `url('./images/bg_little.jpg')` }}>
                         <div className="modal-header">
                             <h5 className="modal-title" id="sendNowModalLabel">Check In</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -67,7 +67,7 @@ class SendNow extends Component {
                             </div>
 
                             <button
-                                className="btn btn-primary"
+                                className="button loginBtn"
                                 type="button"
                                 onClick={() => this.sendLocation()}
                             >

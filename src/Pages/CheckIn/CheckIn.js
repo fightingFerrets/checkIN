@@ -117,14 +117,14 @@ class CheckIn extends Component {
 
             <div>
                 <Nav />
-                <Container>
-                    <Row>
+                <Container  >
+                    <Row className="buttonHolder" >
                         <Col size="md-12"
-                            className="align-self-center">
+                            className="align-self-center buttonHolder">
                             <button
                                 onClick={() => this.addPersonAndSend}
                                 value="add"
-                                className="d-block btn btn-dark"
+                                className="button loginBtn"
                                 data-toggle="modal"
                                 data-target="#addModal"
 
@@ -132,7 +132,7 @@ class CheckIn extends Component {
                             <button
                                 onClick={() => this.checkIn}
                                 value="sendNow"
-                                className="d-block btn btn-dark"
+                                className="button aboutBtn"
                                 data-toggle="modal"
                                 data-target="#sendNowModal"
 

@@ -16,7 +16,7 @@ class About extends Component {
 
                 <div className="aboutContainer" style={{ backgroundImage: `url('../images/a_splash.jpg')` }}>
 
-                    <div className="d">
+                    <div className="mainNames">
                         <img src="../images/ff_logo.png" className="ffLogo" />
                         <div id="ourNames">
                             <a href="https://github.com/NOEL86" className="developers" title="Ashley Jimenez" target="_blank">Ashley J.</a>
