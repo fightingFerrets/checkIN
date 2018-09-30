@@ -21,8 +21,8 @@ class SignUpModal extends Component {
     console.log('this.state', this.state);
     const { email, password } = this.state;
     auth.createUserWithEmailAndPassword(email, password)
-      .then(() => {
-
+      .then((userData) => {
+        console.log("signUp", userData)
         alert('Success');
         window.location.href = '/checkIn';
       })

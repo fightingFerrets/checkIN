@@ -37,14 +37,15 @@ class CheckIn extends Component {
     getReceivers = (userId) => {
         //api to call user model and populate all their friends
         //then set to state
-
+        console.log(userId);
         API.getContacts(userId).then(res =>
+
             this.setState({
                 sendTo: res.data
             }));
     }
     //function that adds a person to mongodb and refreshes the modal allowing a user to add another person to their check in
-    addMultiple = userId => {
+    addMultiple = (userId) => {
         API.saveContact(userId, {
             receiver: this.state.receiver,
             phoneNum: this.state.phoneNum,
@@ -55,7 +56,7 @@ class CheckIn extends Component {
             this.setState({
                 sendTo: res.data
             }));
-        this.getReceivers();
+        this.getReceivers(userId);
     }
     componentDidMount() {
         auth.onAuthStateChanged(function (user) {
@@ -66,7 +67,10 @@ class CheckIn extends Component {
             if (user) {
                 // User is signed in.
                 //insert user into db the constarint will keep duplication from happening
-                API.userLogIn(user.uid).then(res => this.getReceivers());
+                let userId = this.state.userId
+
+                API.userLogIn({ userId: user.uid }).then(res => this.getReceivers(userId)
+                );
                 this.setState({
                     userId: user.uid
                 })
@@ -98,7 +102,7 @@ class CheckIn extends Component {
 
     componentWillMount() {
         auth.onAuthStateChanged(function (user) {
-        
+
             if (user) {
             } else {
                 alert('You have not logged in. Please create an account or log in.')

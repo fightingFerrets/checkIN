@@ -23,7 +23,9 @@ class Modal extends Component {
     console.log('this.state', this.state);
     const { email, password } = this.state;
     auth.signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((userData) => {
+        console.log("login", userData);
+
         window.location.href = '/checkIn';
         // alert('success');
       })
