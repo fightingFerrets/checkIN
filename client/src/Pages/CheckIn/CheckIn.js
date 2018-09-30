@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Maps from "../../Components/Map";
 import Nav from "../../Components/Nav"
-import { Container, Row, Col, Button } from "../../Components/Parts"
+import { Container, Col } from "../../Components/Parts"
 import AddPeople from "../../Components/AddPeople";
 import SendNow from "../../Components/SendNow";
 import { auth } from '../../firebase'
@@ -151,7 +151,19 @@ class CheckIn extends Component {
                     comment={this.state.comment}
                 />
 
-                <SendNow />
+                <SendNow
+                    // {this.state.sendTo.map(sendTo => {
+                    //     return <div className="checkbox">
+                    //         <label><input type="checkbox" value={this.state.sendTo} /></label>
+                    //     </div>
+
+
+                    onChange={this.handleInputChange}
+                    onClick={this.handleFormSubmit}
+                    receiver={this.state.receiver}
+                    phoneNum={this.state.phoneNum}
+                    status={this.state.condition}
+                    comment={this.state.comment} />
             </div>
         )
     }
