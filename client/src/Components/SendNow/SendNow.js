@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./SendNow.css";
+
 class SendNow extends Component {
     state = {
         receiver: [],
@@ -14,7 +15,7 @@ class SendNow extends Component {
     render() {
         return (
 
-            <div className="modal fade" id="sendNowModal" tabindex="-1" role="dialog" aria-labelledby="sendNowModalLabel" aria-hidden="true">
+            <div className="modal fade" id="sendNowModal" tabIndex="-1" role="dialog" aria-labelledby="sendNowModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content" style={{ backgroundImage: `url('./images/bg_little.jpg')` }}>
                         <div className="modal-header">
@@ -29,7 +30,7 @@ class SendNow extends Component {
                                 <label htmlFor="input">Check In With?</label>
 
                                 {this.state.receiver.map(receiver => {
-                                    return <div class="checkbox">
+                                    return <div className="checkbox">
                                         <label><input type="checkbox" value={this.state.receiver} /></label>
                                     </div>
                                 })
@@ -37,30 +38,30 @@ class SendNow extends Component {
 
                                 <label htmlFor="input">Check In With... Hermoine Granger?</label>
 
-                                <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <div className="input-group input-group-sm mb-3">
+                                    <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                     </input>
                                 </div>
 
 
                                 <label htmlFor="input">Phone # example: 7027590101</label>
 
-                                <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <div className="input-group input-group-sm mb-3">
+                                    <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                     </input>
                                 </div>
 
                                 <label htmlFor="input">Status? example: Hiking, Leaving From, Safe, etc.</label>
 
-                                <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <div className="input-group input-group-sm mb-3">
+                                    <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                     </input>
                                 </div>
 
                                 <label htmlFor="input">Comment</label>
 
-                                <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <div className="input-group input-group-sm mb-3">
+                                    <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                     </input>
                                 </div>
 
