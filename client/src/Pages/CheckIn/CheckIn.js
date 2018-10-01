@@ -49,8 +49,6 @@ class CheckIn extends Component {
         API.saveContact(userId, {
             receiver: this.state.receiver,
             phoneNum: this.state.phoneNum,
-            condition: this.state.condition,
-            comment: this.state.comment
 
         }).then(res =>
             this.setState({
@@ -124,22 +122,24 @@ class CheckIn extends Component {
                         <Col size="md-12"
                             className="align-self-center buttonHolder">
                             <button
-                                onClick={() => this.addPersonAndSend}
                                 value="add"
                                 className="button loginBtn"
                                 data-toggle="modal"
-                                data-target="#addModal"
-                            >Add People</button>
+                                data-target="#addModal">
+                                Add People
+                            </button>
+
                             <button
-                                onClick={() => this.checkIn}
                                 value="sendNow"
                                 className="button aboutBtn"
                                 data-toggle="modal"
-                                data-target="#sendNowModal"
-                            >Check In</button>
+                                data-target="#sendNowModal">
+                                Check In
+                            </button>
                         </Col>
                     </div>
                 </Container>
+
                 <Maps />
 
                 <AddPeople
@@ -156,14 +156,14 @@ class CheckIn extends Component {
                     //     return <div className="checkbox">
                     //         <label><input type="checkbox" value={this.state.sendTo} /></label>
                     //     </div>
-
-
                     onChange={this.handleInputChange}
                     onClick={this.handleFormSubmit}
                     receiver={this.state.receiver}
                     phoneNum={this.state.phoneNum}
                     status={this.state.condition}
-                    comment={this.state.comment} />
+                    comment={this.state.comment}
+                />
+
             </div>
         )
     }
