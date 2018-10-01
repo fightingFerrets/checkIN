@@ -2,7 +2,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
+import firebase, { auth, provider } from '../../firebase'
 class Nav extends Component {
+
+  logout() {
+    auth.signOut();
+  }
+  
     render() {
         return (
 
@@ -15,8 +21,9 @@ class Nav extends Component {
                     <div className="navbar-nav">
                         <Link to="/" className="nav-item nav-link active">Home <span className="sr-only">(current)</span></Link>
                         <Link to="/About" className="nav-item nav-link active">About</Link>
-                        <Link to="/checkIn" className="nav-item nav-link active">Check In</Link>
-                        <Link to="/signOut" className="nav-item nav-link active">Sign Out</Link>
+                        <Link to="/checkIn" className="nav-item nav-link active">Check In
+                        </Link>
+                        <Link onClick={this.logout} to="/" className="nav-item nav-link active">Sign Out</Link>
                     </div>
                 </div>
             </nav>

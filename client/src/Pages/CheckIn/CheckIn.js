@@ -98,12 +98,12 @@ class CheckIn extends Component {
     //     });
     // }
 
+    //function that checks to see if a user is logged in before allowing them to view the check in page
     componentWillMount() {
         auth.onAuthStateChanged(function (user) {
 
             if (user) {
             } else {
-                alert('You have not logged in. Please create an account or log in.')
                 window.location.href = '/';
             }
         });
