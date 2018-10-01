@@ -45,7 +45,7 @@ class Modal extends Component {
 
   render() {
     return (
-      <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content" style={{ backgroundImage: `url('./images/bg_little.jpg')` }}>
             <div className="modal-header">
@@ -58,7 +58,7 @@ class Modal extends Component {
             <div className="modal-body">
               <form>
                 <div className="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label htmlFor="exampleInputEmail1">Email address</label>
                   <input
                     className="form-control"
                     type="email"
@@ -68,7 +68,7 @@ class Modal extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label for="exampleInputPassword1">Password</label>
+                  <label htmlFor="exampleInputPassword1">Password</label>
 
                   <input
                     className="form-control"
