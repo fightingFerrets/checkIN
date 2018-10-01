@@ -68,7 +68,7 @@ const SendNow = props => (
                         data-target="#sendNowModal"
                         onClick={props.onClick}>
                         Check In
-                                </button>
+                    </button>
 
                 </div>
             </div>
@@ -76,8 +76,5 @@ const SendNow = props => (
 
     </div >
 )
-
-
-
 
 export default SendNow;

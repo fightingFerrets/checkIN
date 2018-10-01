@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../SendNow/SendNow.css";
 
 const AddPeople = props => (
     <div className="modal fade" id="addModal" tabIndex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -58,7 +59,7 @@ const AddPeople = props => (
                         </button> */}
 
                         <button
-                            className="btn btn-primary"
+                            className="button loginBtn"
                             type="button"
                             data-toggle="modal"
                             data-target="#addModal"
