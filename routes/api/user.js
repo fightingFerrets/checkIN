@@ -10,4 +10,8 @@ router
     .put(userController.update)
     .post(userController.create)
 
+router
+    .route("/sms")
+    .post(userController.create)
+
 module.exports = router;

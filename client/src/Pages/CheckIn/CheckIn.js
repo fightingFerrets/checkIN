@@ -15,7 +15,9 @@ class CheckIn extends Component {
         condition: '',
         mediaUrl: '',
         comment: '',
-        userId: ''
+        userId: '',
+        lat: '',
+        lng: ''
     }
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -57,11 +59,16 @@ class CheckIn extends Component {
         this.getReceivers(userId);
     }
     componentDidMount() {
+        // this.setState({
+        //     lat:
+        //         lng:
+        // })
         auth.onAuthStateChanged(function (user) {
             console.log(user);
             console.log(user.uid);
             console.log(user.displayName)
             console.log(user.email)
+
             if (user) {
                 // User is signed in.
                 //insert user into db the constarint will keep duplication from happening
@@ -78,24 +85,30 @@ class CheckIn extends Component {
             }
         }.bind(this));
     }
-    // //this function should send your mediaUrl location to 
+    //this function should send your mediaUrl location to 
     // sendLocation = () => {
+    //     const accountSid = 'AC6be3394fb63a85337897d91cf9eb4486';
+    //     const authToken = '3d03f30b19b6db41f3d9f6af6fabd5ec';
     //     const MessagingResponse =
     //         require("twilio").twiml.MessagingResponse;
     //     const client = require('twilio')(accountSid, authToken);
-    //     app.post("/sms", (req, res) => {
-    //         phoneNum = req.body.phoneNum;
-    //         receiver = req.body.receiver;
-    //         mediaUrl = req.body.mediaUrl;
-    //         format_number = "+1" + phoneNum;
+    //     API.sendMessage({sendTo : }) {
+    //         let phoneNum = req.body.phoneNum
+    //         let receiver = req.body.receiver
+    //         let lat = this.state.lat
+    //         let lng = this.state.lng
+    //         let comment = req.body.comment
+    //         let status = req.body.condition
+    //         let body = mediaUrl + comment + status
+    //         let format_number = "+1" + phoneNum
     //         client.messages
-    //             .create({ from: '+17024251086', body: 'body', to: format_number, mediaUrl: `http//maps.google.com/?q=${lat},${lng}` })
+    //             .create({ from: '+17024251086', body: body, to: format_number, mediaUrl: `http//maps.google.com/?q=${lat},${lng}` })
     //             .then(message => console.log(message.sid))
     //             .done();
     //         const twiml = new MessagingResponse();
     //         twiml.message("Thanks for signing up!");
     //         res.end(twiml.toString());
-    //     });
+    //     };
     // }
 
     //function that checks to see if a user is logged in before allowing them to view the check in page
