@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
 
-router.route.get("/yes", function (req, res) {
+router.route("/", function (req, res) {
     res.setHeader("Content-Type", "text/plain")
     res.end("hello there");
 });
