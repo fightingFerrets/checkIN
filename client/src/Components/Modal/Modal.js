@@ -4,7 +4,11 @@ import "./Modal.css";
 import firebase, { auth, provider } from '../../firebase'
 import GoogleButton from 'react-google-button'
 
+//this is the login modal
 
+//This could take the place of sign up as it does both login and sign up.
+//When a person logs in this should hit the mongo db to search for the id of the person,
+//if the person exists, then they will login, if they do not then they should be created
 
 class Modal extends Component {
   constructor(props) {
@@ -23,7 +27,9 @@ class Modal extends Component {
     console.log('this.state', this.state);
     const { email, password } = this.state;
     auth.signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((userData) => {
+        console.log("login", userData);
+
         window.location.href = '/checkIn';
         // alert('success');
       })
@@ -43,7 +49,7 @@ class Modal extends Component {
 
   render() {
     return (
-      <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content" style={{ backgroundImage: `url('./images/bg_little.jpg')` }}>
             <div className="modal-header">
@@ -56,7 +62,7 @@ class Modal extends Component {
             <div className="modal-body">
               <form>
                 <div className="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label htmlFor="exampleInputEmail1">Email address</label>
                   <input
                     className="form-control"
                     type="email"
@@ -66,7 +72,7 @@ class Modal extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label for="exampleInputPassword1">Password</label>
+                  <label htmlFor="exampleInputPassword1">Password</label>
 
                   <input
                     className="form-control"
@@ -97,11 +103,7 @@ class Modal extends Component {
               </form>
 
               <div className="modal-footer">
-
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-
-
-
               </div>
               <div>{this.state.error.message}</div>
             </div>

@@ -1,93 +1,90 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import "./Map.css";
-class MapContainer extends Component {
 
-  state = {
-    center: {
-      lat: 40.569325299999996,
-      lng: -111.8943465
-    },
-    zoom: 15,
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
+const MapContainer = props => (
 
-  componentDidMount() {
-    this.getLocation();
-  }
+  // state = {
+  //   center: {
+  //     lat: 40.569325299999996,
+  //     lng: -111.8943465
+  //   },
+  //   zoom: 15,
+  //   showingInfoWindow: false,
+  //   activeMarker: {},
+  //   selectedPlace: {}
+  // };
 
-  getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
-  }
+  // componentDidMount() {
+  //   this.getLocation();
+  // }
 
-  showPosition = (position) => {
-    this.setState({
-      center: {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      }
-    })
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude
-    console.log(lat);
-    console.log(long);
-  }
+  // getLocation = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(this.showPosition);
+  //   } else {
+  //     console.log("Geolocation is not supported by this browser.");
+  //   }
+  // }
 
-  onMarkerClick = (props, marker, e) => {
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-  }
+  // showPosition = (position) => {
+  //   this.setState({
+  //     center: {
+  //       lat: position.coords.latitude,
+  //       lng: position.coords.longitude
+  //     }
+  //   })
+  //   var lat = position.coords.latitude;
+  //   var long = position.coords.longitude
+  //   console.log(lat);
+  //   console.log(long);
+  // }
 
-  onMapClick = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  }
+  // onMarkerClick = (props, marker, e) => {
+  //   this.setState({
+  //     selectedPlace: props,
+  //     activeMarker: marker,
+  //     showingInfoWindow: true
+  //   });
+  // }
 
-  render() {
+  // onMapClick = (props) => {
+  //   if (this.state.showingInfoWindow) {
+  //     this.setState({
+  //       showingInfoWindow: false,
+  //       activeMarker: null
+  //     });
+  //   }
+  // }
 
 
-    return (
+  <Map
+    google={props.google}
+    zoom={18}
+    center={props.center}
+    onClick={props.onMapClick}
+  >
 
-      <Map
-        google={this.props.google}
-        zoom={18}
-        center={this.state.center}
-        onClick={this.onMapClick}
-      >
+    <Marker
+      onClick={props.onMarkerClick}
+      position={{ lat: props.center.lat, lng: props.center.lng }}
 
-        <Marker
-          onClick={this.onMarkerClick}
-          position={{ lat: this.state.center.lat, lng: this.state.center.lng }}
+    />
+    <Marker />
 
-        />
-        <Marker />
+    <InfoWindow
+      marker={props.activeMarker}
+      visible={props.showingInfoWindow}
+    >
+      <div>
+        <h1>{'My Current Location'}</h1>
+      </div>
+    </InfoWindow>
 
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-        >
-          <div>
-            <h1>{'My Current Location'}</h1>
-          </div>
-        </InfoWindow>
+  </Map>
+);
 
-      </Map>
-    );
-  }
-}
+
 
 export default GoogleApiWrapper({
   apiKey: ("AIzaSyDnIJjSvcTsuJRKEa_iUCTnqwg6lZxiGbQ")

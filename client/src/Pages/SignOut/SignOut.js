@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Nav from "../../Components/Nav";
 import { Container, Button } from "../../Components/Parts";
+
+//this should also set your status in mongodb to signed out
+
+
 class Home extends Component {
 
     render() {
@@ -8,7 +12,7 @@ class Home extends Component {
             <div>
                 <Nav />
                 <div id="signOut">
-                    <h1>Have you checked in?</h1>
+                    {/* <h1>Have you checked in?</h1> */}
                     <Button
                         //clickfunction
                         value="Log Out"
