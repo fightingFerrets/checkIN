@@ -6,6 +6,7 @@ import AddPeople from "../../Components/AddPeople";
 import SendNow from "../../Components/SendNow";
 import { auth } from '../../firebase'
 import API from "../../Utils/API";
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class CheckIn extends Component {
     state = {
@@ -16,9 +17,59 @@ class CheckIn extends Component {
         mediaUrl: '',
         comment: '',
         userId: '',
-        lat: '',
-        lng: ''
+        latitude: '',
+        longitude: '',
+
+        center: {
+            lat: 40.569325299999996,
+            lng: -111.8943465
+        },
+        zoom: 15,
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {}
     }
+
+    getLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(this.showPosition);
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+    showPosition = (position) => {
+        this.setState({
+            center: {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            },
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+        })
+        // var lat = position.coords.latitude;
+        // var long = position.coords.longitude
+        console.log(this.state.latitude);
+        console.log(this.state.longitude);
+    }
+
+    onMarkerClick = (props, marker, e) => {
+        this.setState({
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
+        });
+    }
+
+    onMapClick = (props) => {
+        if (this.state.showingInfoWindow) {
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null
+            });
+        }
+    }
+
     handleInputChange = event => {
         const { name, value } = event.target;
         console.log(name, value);
@@ -58,16 +109,16 @@ class CheckIn extends Component {
             }));
         this.getReceivers(userId);
     }
+
+    //when the page loads this function will run//
     componentDidMount() {
-        // this.setState({
-        //     lat:
-        //         lng:
-        // })
+        this.getLocation();
         auth.onAuthStateChanged(function (user) {
             console.log(user);
             console.log(user.uid);
             console.log(user.displayName)
             console.log(user.email)
+
 
             if (user) {
                 // User is signed in.
@@ -77,8 +128,9 @@ class CheckIn extends Component {
                 API.userLogIn({ userId: user.uid }).then(res => this.getReceivers(userId)
                 );
                 this.setState({
-                    userId: user.uid
+                    userId: user.uid,
                 })
+
                 //aftuser is in db call getReceivers
             } else {
                 // No user is signed in.
@@ -95,8 +147,8 @@ class CheckIn extends Component {
     //     API.sendMessage({sendTo : }) {
     //         let phoneNum = req.body.phoneNum
     //         let receiver = req.body.receiver
-    //         let lat = this.state.lat
-    //         let lng = this.state.lng
+    //         let lat = this.state.latitude
+    //         let lng = this.state.longitude
     //         let comment = req.body.comment
     //         let status = req.body.condition
     //         let body = mediaUrl + comment + status
@@ -153,7 +205,20 @@ class CheckIn extends Component {
                     </div>
                 </Container>
 
-                <Maps />
+                <Maps
+                    lat={this.state.lat}
+                    lng={this.state.lng}
+                    google={this.state.google}
+                    center={this.state.center}
+                    onClick={this.onMapClick}
+                    zoom={this.state.zoom}
+
+                    onClick={this.onMarkerClick}
+                    position={{ lat: this.state.center.lat, lng: this.state.center.lng }}
+
+                    marker={this.state.activeMarker}
+                    visible={this.state.showingInfoWindow}
+                />
 
                 <AddPeople
                     onChange={this.handleInputChange}
