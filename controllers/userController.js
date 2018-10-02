@@ -2,18 +2,25 @@ const db = require("../models");
 
 module.exports = {
     findAll: function (req, res) {
-        console.log("HEllo");
-        res.send("IM here");
-    },
-
-    findById: function (req, res) {
-        console.log(req.params.id)
+        console.log("HEllo")
+        console.log("findAll", req.body);
         db.User
-            .findById(req.params.id)
+            .find(req.query)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+
+    findById: function (req, res) {
+        console.log("findbyID", req.params.id)
+        db.User
+            .find({ userId: req.params.id })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => {
+                console.log("findbyID", err), res.status(422).json(err);
+            })
+    },
     create: function (req, res) {
+        console.log("create", req.body);
         db.User
             .create(req.body)
             .then(dbModel => res.json(dbModel))

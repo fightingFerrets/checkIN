@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../SendNow/SendNow.css";
 
 const AddPeople = props => (
     <div className="modal fade" id="addModal" tabIndex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -19,8 +20,7 @@ const AddPeople = props => (
                                     id="receiver"
                                     value={props.receiver}
                                     onChange={props.onChange}
-                                    name="receiver"
-                                >
+                                    name="receiver">
                                 </input>
                             </div>
                             <label htmlFor="input">Phone Number ex: 7028885555</label>
@@ -29,46 +29,45 @@ const AddPeople = props => (
                                     id="phoneNum"
                                     value={props.phoneNum}
                                     onChange={props.onChange}
-                                    name="phoneNum"
-
-                                >
+                                    name="phoneNum">
                                 </input>
                             </div>
-                            <label htmlFor="input">Status? example: Hiking, Leaving From, Safe, etc.</label>
+                            {/* <label htmlFor="input">Status? example: Hiking, Leaving From, Safe, etc.</label>
                             <div className="input-group input-group-sm mb-3">
                                 <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                                     id="condition"
                                     value={props.condition}
                                     onChange={props.onChange}
-                                    name="condition"
-                                >
+                                    name="condition">
                                 </input>
-                            </div>
-                            <label htmlFor="input">Comment</label>
+                            </div> */}
+                            {/* <label htmlFor="input">Comment</label>
                             <div className="input-group input-group-sm mb-3">
                                 <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                                     id="comment"
                                     value={props.comment}
                                     onChange={props.onChange}
-                                    name="comment"
-                                >
+                                    name="comment">
                                 </input>
-                            </div>
+                            </div> */}
                         </div>
-                        <button
+
+                        {/* <button //add A person and send check in//
                             className="btn btn-primary"
                             type="button"
-                        // onClick={() => this.sendLocation()}
-                        >
+                            onClick={props.onClick}>
                             Check In
-                                </button>
+                        </button> */}
+
                         <button
-                            className="btn btn-primary"
+                            className="button loginBtn"
                             type="button"
-                            onClick={props.onClick}
-                        >
-                            Add Another Person
-                                </button>
+                            data-toggle="modal"
+                            data-target="#addModal"
+                            onClick={props.onClick}>
+                            Add Person
+                        </button>
+
                     </form>
                 </div>
             </div>
