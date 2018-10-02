@@ -4,7 +4,11 @@ import "./Modal.css";
 import firebase, { auth, provider } from '../../firebase'
 import GoogleButton from 'react-google-button'
 
+//this is the login modal
 
+//This could take the place of sign up as it does both login and sign up.
+//When a person logs in this should hit the mongo db to search for the id of the person,
+//if the person exists, then they will login, if they do not then they should be created
 
 class Modal extends Component {
   constructor(props) {

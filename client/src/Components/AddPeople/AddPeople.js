@@ -51,7 +51,8 @@ const AddPeople = props => (
                                 </input>
                             </div> */}
                         </div>
-                        {/* <button
+
+                        {/* <button //add A person and send check in//
                             className="btn btn-primary"
                             type="button"
                             onClick={props.onClick}>
