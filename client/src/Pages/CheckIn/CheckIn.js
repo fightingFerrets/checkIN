@@ -97,6 +97,8 @@ class CheckIn extends Component {
                 sendTo: res.data
             }));
     }
+
+
     //function that adds a person to mongodb and refreshes the modal allowing a user to add another person to their check in
     addMultiple = (userId) => {
         API.saveContact(userId, {
@@ -113,54 +115,88 @@ class CheckIn extends Component {
     //when the page loads this function will run//
     componentDidMount() {
         this.getLocation();
+
         auth.onAuthStateChanged(function (user) {
             console.log(user);
             console.log(user.uid);
             console.log(user.displayName)
             console.log(user.email)
 
-
             if (user) {
                 // User is signed in.
                 //insert user into db the constarint will keep duplication from happening
-                let userId = this.state.userId
-
-                API.userLogIn({ userId: user.uid }).then(res => this.getReceivers(userId)
-                );
                 this.setState({
                     userId: user.uid,
                 })
+                console.log(user.uid);
+                API.doesExist(user.uid).then(res => {
+                    let mongoId = res.data._id
+                    console.log(res)
+                    if (res.data.exist === true) {
 
+                        API.getContacts(mongoId).then(res => {
+                            this.setState({ sendTo: res.data.sendTo })
+                        })
+
+                    } else {
+                        API.userLogIn(user.uid)
+                    }
+
+                })
+
+                // API.getUser({ userId: user.uid }).then(res => {
+                //     console.log("checkIn page Get User", res)
+                //     for (let i = 0; i < res.data.length; i++) {
+                //         API.getContacts({ userId: res.data[i].userId })
+                //             .then(res => {
+                //                 console.log("get user", res);
+                //                 if (res.data.length === 0) {
+                //                     console.log("I Work!");
+                //                     API.userLogIn({ userId: user.uid }).then(({ data }) => console.log(data)
+                //                     );
+                //                 } else {
+                //                     this.getReceivers(userId)
+                //                 }
+                //             }
+                //             )
+                //     }
+
+
+                // })
                 //aftuser is in db call getReceivers
             } else {
-                // No user is signed in.
+                alert("error");
             }
         }.bind(this));
     }
     //this function should send your mediaUrl location to 
-    // sendLocation = () => {
+    // handleSendSubmit = () => {
     //     const accountSid = 'AC6be3394fb63a85337897d91cf9eb4486';
     //     const authToken = '3d03f30b19b6db41f3d9f6af6fabd5ec';
     //     const MessagingResponse =
     //         require("twilio").twiml.MessagingResponse;
     //     const client = require('twilio')(accountSid, authToken);
-    //     API.sendMessage({sendTo : }) {
-    //         let phoneNum = req.body.phoneNum
-    //         let receiver = req.body.receiver
-    //         let lat = this.state.latitude
-    //         let lng = this.state.longitude
-    //         let comment = req.body.comment
-    //         let status = req.body.condition
-    //         let body = mediaUrl + comment + status
-    //         let format_number = "+1" + phoneNum
-    //         client.messages
-    //             .create({ from: '+17024251086', body: body, to: format_number, mediaUrl: `http//maps.google.com/?q=${lat},${lng}` })
-    //             .then(message => console.log(message.sid))
-    //             .done();
+
+    //     this.setState({ mediaUrl: `http//maps.google.com/?q=${this.state.latitude},${this.state.longitude}` })
+
+    //     let phoneNum = this.state.phoneNum
+    //     let comment = this.state.comment
+    //     let condition = this.state.condition
+    //     let body = mediaUrl + comment + condition
+    //     let format_number = "+1" + phoneNum
+    //     let mediaUrl = this.state.mediaUrl
+    //     const receiverData = client.messages
+    //         .create({ from: '+17024251086', body: body, to: format_number, mediaUrl: mediaUrl })
+    //         .then(message => console.log(message.sid))
+    //         .done();
+
+
+    //     API.sendMessage(receiverData).then(res => {
     //         const twiml = new MessagingResponse();
-    //         twiml.message("Thanks for signing up!");
-    //         res.end(twiml.toString());
-    //     };
+    //         twiml.message("Thanks for signing up!")
+    //         res.end(twiml.toString())
+    //         alert("message sent")
+    //     });
     // }
 
     //function that checks to see if a user is logged in before allowing them to view the check in page
@@ -235,11 +271,12 @@ class CheckIn extends Component {
                     //         <label><input type="checkbox" value={this.state.sendTo} /></label>
                     //     </div>
                     onChange={this.handleInputChange}
-                    onClick={this.handleFormSubmit}
+                    onClick={this.handleSendSubmit}
                     receiver={this.state.receiver}
                     phoneNum={this.state.phoneNum}
                     status={this.state.condition}
                     comment={this.state.comment}
+
                 />
 
             </div>

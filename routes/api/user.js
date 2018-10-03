@@ -14,4 +14,8 @@ router
     .route("/sms")
     .post(userController.create)
 
+router
+    .route("/does-exist/:id")
+    .get(userController.doesExist)
+
 module.exports = router;
