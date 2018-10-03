@@ -20,5 +20,9 @@ export default {
     //Send message or check in
     sendMessage: function (receiverData) {
         return axios.post("/api/sms", receiverData);
+    },
+    doesExist: function (id) {
+        console.log("exist", id);
+        return axios.get("/api/user/does-exist/" + id)
     }
 };

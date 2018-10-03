@@ -8,7 +8,7 @@ import GoogleButton from 'react-google-button'
 
 //This could take the place of sign up as it does both login and sign up.
 //When a person logs in this should hit the mongo db to search for the id of the person,
-//if the person exists, then they will login, if they do not then they should be created
+//if the person exists, then the program should search for any people associated with that loginID and should not create them, if they do not exist it should create
 
 class Modal extends Component {
   constructor(props) {
