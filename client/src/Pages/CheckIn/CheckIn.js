@@ -144,25 +144,6 @@ class CheckIn extends Component {
 
                 })
 
-                // API.getUser({ userId: user.uid }).then(res => {
-                //     console.log("checkIn page Get User", res)
-                //     for (let i = 0; i < res.data.length; i++) {
-                //         API.getContacts({ userId: res.data[i].userId })
-                //             .then(res => {
-                //                 console.log("get user", res);
-                //                 if (res.data.length === 0) {
-                //                     console.log("I Work!");
-                //                     API.userLogIn({ userId: user.uid }).then(({ data }) => console.log(data)
-                //                     );
-                //                 } else {
-                //                     this.getReceivers(userId)
-                //                 }
-                //             }
-                //             )
-                //     }
-
-
-                // })
                 //aftuser is in db call getReceivers
             } else {
                 alert("error");
@@ -170,34 +151,30 @@ class CheckIn extends Component {
         }.bind(this));
     }
     //this function should send your mediaUrl location to 
-    // handleSendSubmit = () => {
-    //     const accountSid = 'AC6be3394fb63a85337897d91cf9eb4486';
-    //     const authToken = '3d03f30b19b6db41f3d9f6af6fabd5ec';
-    //     const MessagingResponse =
-    //         require("twilio").twiml.MessagingResponse;
-    //     const client = require('twilio')(accountSid, authToken);
+    handleSendSubmit = () => {
 
-    //     this.setState({ mediaUrl: `http//maps.google.com/?q=${this.state.latitude},${this.state.longitude}` })
+        this.setState({ mediaUrl: `http//maps.google.com/?q=${this.state.latitude},${this.state.longitude}` })
 
-    //     let phoneNum = this.state.phoneNum
-    //     let comment = this.state.comment
-    //     let condition = this.state.condition
-    //     let body = mediaUrl + comment + condition
-    //     let format_number = "+1" + phoneNum
-    //     let mediaUrl = this.state.mediaUrl
-    //     const receiverData = client.messages
-    //         .create({ from: '+17024251086', body: body, to: format_number, mediaUrl: mediaUrl })
-    //         .then(message => console.log(message.sid))
-    //         .done();
+        let phoneNum = this.state.phoneNum
+        let comment = this.state.comment
+        let condition = this.state.condition
+        let mediaUrl = `maps.google.com/?q=${this.state.latitude},${this.state.longitude}`
+        let messageBody = mediaUrl + " " + condition + " " + comment
+        let format_number = "+1" + phoneNum
+        const receiverData = {
+            phoneNum,
+            messageBody,
+            format_number,
+            mediaUrl
+        }
 
-
-    //     API.sendMessage(receiverData).then(res => {
-    //         const twiml = new MessagingResponse();
-    //         twiml.message("Thanks for signing up!")
-    //         res.end(twiml.toString())
-    //         alert("message sent")
-    //     });
-    // }
+        API.sendMessage(receiverData).then(res => {
+            // const twiml = new MessagingResponse();
+            // twiml.message("Thanks for signing up!")
+            // res.end(twiml.toString())
+            alert("message sent")
+        });
+    }
 
     //function that checks to see if a user is logged in before allowing them to view the check in page
     componentWillMount() {
