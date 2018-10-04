@@ -59,7 +59,7 @@ class Modal extends Component {
               </button>
             </div>
 
-            <div className="modal-body">
+            <div className="modal-body" style={{ backgroundImage: `url('./images/bg_little.jpg')` }}>
               <form>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Email address</label>

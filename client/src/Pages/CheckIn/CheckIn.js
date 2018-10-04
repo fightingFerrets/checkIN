@@ -121,14 +121,18 @@ class CheckIn extends Component {
 
 
             if (user) {
-                // User is signed in.
-                //insert user into db the constarint will keep duplication from happening
                 let userId = this.state.userId
-
-                API.userLogIn({ userId: user.uid }).then(res => this.getReceivers(userId)
-                );
                 this.setState({
                     userId: user.uid,
+                })
+
+                API.getUser({ userId: user.uid }).then(res => {
+                    if (!res) {
+                        API.userLogIn({ userId: user.uid }).then(res => this.getReceivers(userId)
+                        );
+                    } else {
+                        this.getReceivers(userId)
+                    }
                 })
 
                 //aftuser is in db call getReceivers
