@@ -4,7 +4,7 @@ import "../SendNow/SendNow.css";
 const AddPeople = props => (
     <div className="modal fade" id="addModal" tabIndex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
-            <div className="modal-content">
+            <div className="modal-content" style={{ backgroundImage: `url('./images/bg_little.jpg')` }}>
                 <div className="modal-header">
                     <h5 className="modal-title" id="addModalLabel">Check In</h5>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">

@@ -6,11 +6,12 @@ import AddPeople from "../../Components/AddPeople";
 import SendNow from "../../Components/SendNow";
 import { auth } from '../../firebase'
 import API from "../../Utils/API";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import "./CheckIn.css";
+// import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 class CheckIn extends Component {
     state = {
-        sendTo: [],
+        sendTo: {},
         receiver: '', //person in mongo db related with our user
         phoneNum: '',
         condition: '',
@@ -19,6 +20,7 @@ class CheckIn extends Component {
         userId: '',
         latitude: '',
         longitude: '',
+        mongoId: '',
 
         center: {
             lat: 40.569325299999996,
@@ -29,6 +31,7 @@ class CheckIn extends Component {
         activeMarker: {},
         selectedPlace: {}
     }
+
 
     getLocation = () => {
         if (navigator.geolocation) {
@@ -77,39 +80,43 @@ class CheckIn extends Component {
             [name]: value
         })
     }
+
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(event);
-        console.log(this.state.receiver)
-        console.log(this.state.userId)
-        this.addMultiple(this.state.userId);
+        // console.log(event);
+        // console.log(this.state.receiver)
+        // console.log(this.state.userId)
+        this.addMultiple(this.state.mongoId);
     }
     //function that adds a person to our mongo db and sends the mediaUrl
     addPersonAndSend = () => {
     }
-    getReceivers = (userId) => {
+    getReceivers = (mongoId) => {
         //api to call user model and populate all their friends
         //then set to state
-        console.log(userId);
-        API.getContacts(userId).then(res =>
+        console.log(mongoId);
+        API.getContacts(mongoId).then(res =>
 
             this.setState({
                 sendTo: res.data
             }));
     }
-
-
     //function that adds a person to mongodb and refreshes the modal allowing a user to add another person to their check in
-    addMultiple = (userId) => {
-        API.saveContact(userId, {
-            receiver: this.state.receiver,
-            phoneNum: this.state.phoneNum,
+
+    addMultiple = () => {
+        let mongoId = this.state.mongoId;
+        console.log("addMultiple Func", mongoId);
+        API.saveContact(mongoId, {
+            sendTo: {
+                receiver: this.state.receiver,
+                phoneNum: this.state.phoneNum
+            }
 
         }).then(res =>
             this.setState({
                 sendTo: res.data
             }));
-        this.getReceivers(userId);
+        this.getReceivers(mongoId);
     }
 
     //when the page loads this function will run//
@@ -117,7 +124,7 @@ class CheckIn extends Component {
         this.getLocation();
 
         auth.onAuthStateChanged(function (user) {
-            console.log(user);
+            // console.log(user);
             console.log(user.uid);
             console.log(user.displayName)
             console.log(user.email)
@@ -130,16 +137,18 @@ class CheckIn extends Component {
                 })
                 console.log(user.uid);
                 API.doesExist(user.uid).then(res => {
-                    let mongoId = res.data._id
+                    this.setState({ mongoId: res.data.mongoId })
                     console.log(res)
                     if (res.data.exist === true) {
 
-                        API.getContacts(mongoId).then(res => {
-                            this.setState({ sendTo: res.data.sendTo })
+                        API.getContacts(this.state.mongoId).then(res => {
+                            this.setState({
+                                sendTo: res.data.sendTo,
+                            })
                         })
 
                     } else {
-                        API.userLogIn(user.uid)
+                        API.userLogIn({ userId: user.uid })
                     }
 
                 })
@@ -187,9 +196,9 @@ class CheckIn extends Component {
         });
     }
 
-    addPersonAndSend = () => {
-        console.log("click");
-    }
+    // addPersonAndSend = () => {
+    //     console.log("click");
+    // }
 
     render() {
         return (
@@ -198,7 +207,7 @@ class CheckIn extends Component {
                 <Container  >
                     <div className="buttonHolder" >
                         <Col size="md-12"
-                            className="align-self-center buttonHolder">
+                        >
                             <button
                                 value="add"
                                 className="button loginBtn"
@@ -243,10 +252,6 @@ class CheckIn extends Component {
                 />
 
                 <SendNow
-                    // {this.state.sendTo.map(sendTo => {
-                    //     return <div className="checkbox">
-                    //         <label><input type="checkbox" value={this.state.sendTo} /></label>
-                    //     </div>
                     onChange={this.handleInputChange}
                     onClick={this.handleSendSubmit}
                     receiver={this.state.receiver}
