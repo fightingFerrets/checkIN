@@ -210,13 +210,9 @@ class CheckIn extends Component {
             <Col size="md-12">
               <button
                 value="getLocation"
-                className="button aboutBtn"
+                className="locationFinder"
                 onClick={this.getLocation()}
-                // data-toggle="modal"
-                // data-target="#sendNowModal"
-              >
-                Get My Location
-              </button>
+              />
 
               <button
                 value="add"

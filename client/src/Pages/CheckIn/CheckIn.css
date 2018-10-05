@@ -101,3 +101,7 @@
     border-radius: 5px;
   }
 }
+
+.locationFinder {
+  display: none;
+}
