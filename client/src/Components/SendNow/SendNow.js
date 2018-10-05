@@ -15,7 +15,9 @@ const SendNow = props => (
                 <div className="modal-body">
                     <div className="form-group">
                         <label htmlFor="input">Check In With?</label>
-
+                        {/* <div className="checkbox">
+                            <label>{props.sendReceiver}<input type="checkbox" value={props.sendTo} /></label>
+                        </div> */}
                         <div className="input-group input-group-sm mb-3">
                             <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                                 id="receiver"

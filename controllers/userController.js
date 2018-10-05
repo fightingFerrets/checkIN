@@ -36,7 +36,10 @@ module.exports = {
     update: function (req, res) {
         db.User
             .findOneAndUpdate({ _id: req.params.id }, req.body)
-            .then(dbModel => res.json(dbModel))
+            .then(dbModel => {
+                console.log("Update", dbModel)
+                res.json(dbModel)
+            })
             .catch(err => res.status(422).json(err));
     },
     doesExist: function (req, res) {
@@ -52,7 +55,7 @@ module.exports = {
                 } else {
                     user = {
                         exist: true,
-                        _id: dbModel._id
+                        mongoId: dbModel._id
                     }
                     res.status(200).json(user)
                 }
