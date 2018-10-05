@@ -1,15 +1,15 @@
 nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 0 05px rgba(.0,0,0,0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 05px rgba(0, 0, 0, 0.75);
 }
 .fixMe {
-    /* position: fixed !important; */
-    z-index: 6;
+  /* position: fixed !important; */
+  z-index: 6;
 }
 .navbar-brand img {
-    width: 100px;
+  width: 100px;
 }

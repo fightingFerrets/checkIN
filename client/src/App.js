@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './App.css';
+import "./App.css";
 import Home from "./Pages/Home";
 import About from "./Pages/About/About";
 import CheckIn from "./Pages/CheckIn";
 import SignOut from "./Pages/SignOut";
-
 
 const App = () => (
   <Router>
@@ -18,7 +17,6 @@ const App = () => (
       </Switch>
     </div>
   </Router>
-)
-
+);
 
 export default App;

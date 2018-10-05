@@ -1,8 +1,7 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "./Modal.css";
-import firebase, { auth, provider } from '../../firebase'
-import GoogleButton from 'react-google-button'
+import firebase, { auth, provider } from "../../firebase";
+import GoogleButton from "react-google-button";
 
 //this is the login modal
 
@@ -14,47 +13,63 @@ class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       user: null,
       error: {
-        message: ''
+        message: ""
       }
-    }
+    };
   }
 
   login() {
-    console.log('this.state', this.state);
+    console.log("this.state", this.state);
     const { email, password } = this.state;
-    auth.signInWithEmailAndPassword(email, password)
-      .then((userData) => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(userData => {
         console.log("login", userData);
 
-        window.location.href = '/checkIn';
+        window.location.href = "/checkIn";
         // alert('success');
       })
       .catch(error => {
-        this.setState({ error })
+        this.setState({ error });
       });
   }
 
   googleLogIn() {
-    auth.signInWithPopup(provider)
-      .then((result) => {
-        console.log(result);
-        window.location.href = '/checkIn';
-
-      });
+    auth.signInWithPopup(provider).then(result => {
+      console.log(result);
+      window.location.href = "/checkIn";
+    });
   }
 
   render() {
     return (
-      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="signUpModalLabel"
+        aria-hidden="true"
+      >
         <div className="modal-dialog" role="document">
-          <div className="modal-content" style={{ backgroundImage: `url('./images/bg_little.jpg')` }}>
+          <div
+            className="modal-content"
+            style={{ backgroundImage: `url('./images/bg_little.jpg')` }}
+          >
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Login</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Login
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -67,7 +82,9 @@ class Modal extends Component {
                     className="form-control"
                     type="email"
                     placeholder="email"
-                    onChange={event => this.setState({ email: event.target.value })}
+                    onChange={event =>
+                      this.setState({ email: event.target.value })
+                    }
                   />
                 </div>
 
@@ -78,9 +95,10 @@ class Modal extends Component {
                     className="form-control"
                     type="password"
                     placeholder="password"
-                    onChange={event => this.setState({ password: event.target.value })}
+                    onChange={event =>
+                      this.setState({ password: event.target.value })
+                    }
                   />
-
                 </div>
 
                 <button
@@ -89,32 +107,34 @@ class Modal extends Component {
                   onClick={() => this.login()}
                 >
                   Login
-              </button>
-                <br></br><br></br>
-
+                </button>
+                <br />
+                <br />
 
                 <GoogleButton
                   onClick={() => this.googleLogIn()}
                   className="googlesCool"
                 />
-                <br></br><br></br>
-
-
+                <br />
+                <br />
               </form>
 
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
               </div>
               <div>{this.state.error.message}</div>
             </div>
           </div>
         </div>
       </div>
-
-    )
+    );
   }
 }
-
-
 
 export default Modal;

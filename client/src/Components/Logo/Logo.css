@@ -1,51 +1,44 @@
-
-
 @font-face {
-  font-family: 'Gotham';
-  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Book.otf")
+  font-family: "Gotham";
+  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Book.otf");
 }
 
 @font-face {
-  font-family: 'GothamItalic';
-  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-BookItalic.otf")
+  font-family: "GothamItalic";
+  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-BookItalic.otf");
 }
 
 @font-face {
-  font-family: 'GothamLight';
-  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Light.otf")
+  font-family: "GothamLight";
+  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Light.otf");
 }
 
 @font-face {
-  font-family: 'GothamLightItalic';
-  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-LightItalic.otf")
-}
-  
-@font-face {
-  font-family: 'GothamBold';
-  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Bold.otf")
+  font-family: "GothamLightItalic";
+  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-LightItalic.otf");
 }
 
 @font-face {
-  font-family: 'GothamBoldItalic';
-  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-BoldItalic.otf")
+  font-family: "GothamBold";
+  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-Bold.otf");
+}
+
+@font-face {
+  font-family: "GothamBoldItalic";
+  src: url("https://www.daz3d.com/skin/frontend/enterprise/daznew/font/gotham/Gotham-BoldItalic.otf");
 }
 .mainContainer {
   height: 100vh;
 }
 .centerMe {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%,-57%);
-    transform: translate(-50%,-57%);
-    z-index: 11;
-    /* background: url('./images/splash_bg.jpg'); */
-    text-align: center;
-      
-
-
-
-
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -57%);
+  transform: translate(-50%, -57%);
+  z-index: 11;
+  /* background: url('./images/splash_bg.jpg'); */
+  text-align: center;
 }
 .centerMe img {
   width: 100%;
@@ -57,18 +50,17 @@
   width: 100%;
   max-width: 360px;
   border-radius: 25px;
-  padding: .8rem;
+  padding: 0.8rem;
   font-size: 1.2rem;
   border: none;
   color: white;
-  font-family: 'GothamBold';
+  font-family: "GothamBold";
   cursor: pointer;
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .button.loginBtn {
