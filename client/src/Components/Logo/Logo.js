@@ -12,7 +12,7 @@ import SignUpModal from "../SignUp";
 const Logo = props => (
   <div className="mainContainer" style={{ backgroundImage: `url('./images/splash_bg.jpg')` }}>
     <div className="centerMe">
-      <div>
+      <div className=" animated slideInDown">
         <img src="../images/logo.png" />
         <button type="button" className="button loginBtn" data-toggle="modal" data-target="#exampleModal">Login</button><br />
 
