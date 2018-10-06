@@ -62,13 +62,15 @@ const MapContainer = props => (
     center={props.center}
     onClick={props.onMapClick}
     initialCenter={{
-      lat: props.lat,
-      lng: props.long
+      //change to lat: props.lat, lng: props.long after presentation
+      lat: 40.569359,
+      lng: -111.89444519999999
     }}
   >
     <Marker
       onClick={props.onMarkerClick}
-      position={{ lat: props.center.lat, lng: props.center.lng }}
+      //change to lat: props.center.lat, lng: props.center.lng after presentation
+      position={{ lat: 40.569359, lng: -111.89444519999999 }}
     />
     <Marker />
 
