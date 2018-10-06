@@ -26,7 +26,7 @@ class CheckIn extends Component {
       lat: 40.569325299999996,
       lng: -111.8943465
     },
-    zoom: 15,
+    zoom: 18,
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {}
@@ -47,7 +47,8 @@ class CheckIn extends Component {
         lng: position.coords.longitude
       },
       latitude: position.coords.latitude,
-      longitude: position.coords.longitude
+      longitude: position.coords.longitude,
+      zoom: 18
     });
     // var lat = position.coords.latitude;
     // var long = position.coords.longitude
@@ -236,14 +237,14 @@ class CheckIn extends Component {
         </Container>
 
         <Maps
-          lat={this.state.lat}
-          lng={this.state.lng}
+          // lat={this.state.lat}
+          // lng={this.state.lng}
           google={this.state.google}
           center={this.state.center}
           onClick={this.onMapClick}
           zoom={this.state.zoom}
           onClick={this.onMarkerClick}
-          position={{ lat: this.state.center.lat, lng: this.state.center.lng }}
+          // position={{ lat: this.state.center.lat, lng: this.state.center.lng }}
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
         />

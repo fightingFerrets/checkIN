@@ -58,9 +58,13 @@ const MapContainer = props => (
 
   <Map
     google={props.google}
-    zoom={18}
+    zoom={props.zoom}
     center={props.center}
     onClick={props.onMapClick}
+    initialCenter={{
+      lat: props.lat,
+      lng: props.long
+    }}
   >
     <Marker
       onClick={props.onMarkerClick}
