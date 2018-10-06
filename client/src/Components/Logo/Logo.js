@@ -14,6 +14,8 @@ const Logo = props => (
     <div className="centerMe">
       <div className=" animated slideInDown">
         <img src="../images/logo.png" />
+        <h6>Anyone who is safety conscious and wants to share their location to loved ones in case of emergency, or taking an adventure on alone is our primary demographic. The app will allow you to log in and save contacts that you can send your location along with a brief message to allow for piece of mind via SMS text messaging. </h6>
+
         <button type="button" className="button loginBtn" data-toggle="modal" data-target="#exampleModal">Login</button><br />
 
         <button href="button" className="button signUpBtn" data-toggle="modal" data-target="#signUpModal">Sign Up</button><br></br>

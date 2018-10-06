@@ -23,15 +23,14 @@ class CheckIn extends Component {
         mongoId: '',
 
         center: {
-            lat: 40.569325299999996,
-            lng: -111.8943465
+            lat: '',
+            lng: ''
         },
         zoom: 15,
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {}
     }
-
 
     getLocation = () => {
         if (navigator.geolocation) {
@@ -181,7 +180,7 @@ class CheckIn extends Component {
             // const twiml = new MessagingResponse();
             // twiml.message("Thanks for signing up!")
             // res.end(twiml.toString())
-            alert("message sent")
+            alert("message sent");
         });
     }
 

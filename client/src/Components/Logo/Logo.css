@@ -42,15 +42,11 @@
     /* background: url('./images/splash_bg.jpg'); */
     text-align: center;
       
-
-
-
-
 }
 .centerMe img {
   width: 100%;
   max-width: 756px;
-  margin: 0 auto 5% auto;
+  margin: 10% auto 5% auto;
 }
 
 .button {
