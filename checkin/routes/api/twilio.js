@@ -1,15 +1,8 @@
-const pages = require('./pages');
-const message = require('./message');
+// const pages = require('./pages');
+// const message = require('./message');
+const router = require("express").Router();
+var tiwlioController = require("../../controllers/twilioController");
 
-// Map routes to controller functions
-module.exports = function (app) {
-    // Twilio SMS webhook route
-    app.post('/message', message.webhook);
+router.route("/").post(tiwlioController.sendSms);
 
-    // Render a page that will allow an administrator to send out a message
-    // to all subscribers
-    app.get('/', pages.showForm);
-
-    // Handle form submission and send messages to subscribers
-    app.post('/message/send', message.sendMessages);
-};
+module.exports = router;
